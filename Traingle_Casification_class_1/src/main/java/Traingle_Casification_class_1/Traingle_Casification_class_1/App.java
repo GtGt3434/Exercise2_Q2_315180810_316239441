@@ -56,8 +56,19 @@ class TriangleClassifier {
 		return isTriangle(a, b, c) && ((a == b) || (b == c) || (c == a));
 	}
 
+	/**
+	 * what's wrong: there is a messing statement: a==c
+	 * 
+	 * what could've been done better: replacing (a + b > c && a + c > b && b + c)
+	 * with isTriangle() method.
+	 * 
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return
+	 */
 	private static boolean isEquilateral(int a, int b, int c) {
-		return a + b > c && b + c > b && b + c > a && a == b && b == c;
+		return isTriangle(a, b, c) && a == b && b == c && a == c;
 	}
 
 	public static Triangle_Types get_type() {
