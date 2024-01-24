@@ -30,19 +30,30 @@ class TriangleClassifier {
 	}
 
 	/**
-	 * what's wrong: in the first statement in return it should be a+b>c
-	 * testing it
+	 * what's wrong: in the first return statement, it should be a+b>c testing it
+	 * 
 	 * @param a
 	 * @param b
 	 * @param c
 	 * @return
 	 */
 	private static boolean isTriangle(int a, int b, int c) {
-		return b + b > c && a + c > b && b + c > a;
+		return a + b > c && a + c > b && b + c > a;
 	}
 
+	/**
+	 * what's wrong: a==a isn't valid to check if the triangle is isIsosceles, also
+	 * we might ignore the other statements in return in case at least one of b==c
+	 * or c==a is true and return true. We can also avoid unnecessary code by
+	 * replacing (a + b > c && a + c > b && b + c) with isTriangle() method.
+	 * 
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return
+	 */
 	private static boolean isIsosceles(int a, int b, int c) {
-		return a + b > c && a + c > b && b + c > a && (a == a) || (b == c) || (c == a);
+		return isTriangle(a, b, c) && ((a == b) || (b == c) || (c == a));
 	}
 
 	private static boolean isEquilateral(int a, int b, int c) {
