@@ -15,30 +15,36 @@ class TriangleClassifier {
 	private static Triangle_Types triangle;
 
 	/**
-	 * what's wrong: in the first if statement: triangle should be set to
+	 * WHAT'S WRONG: in the first if statement: triangle should be set to
 	 * equilateral if the statement was true
 	 * 
 	 * in the third if statement: a "!" should've been added, and what should have
 	 * been checked is if the variable triangle was not a triangle
 	 * 
-	 * what's added: a statement that checks if at least one of the triangle sides
+	 * in this method, there could be a chance where negative value sides were
+	 * added, then this won't be considered because there are no if statements that
+	 * deal with this situation
+	 * 
+	 * WHAT'S ADDED: a statement that checks if at least one of the triangle sides
 	 * is negative (for the sake of using the "ERROR" enumeration value, also the
-	 * length of a side in a triangle can't be negative)
+	 * length of a side in a triangle can't be negative).
+	 * 
+	 * NEW UPDATE: the if statement that checks if the triangle has at least one
+	 * negative side value has been moved up to be the first statement to be checked
 	 * 
 	 * @param a
 	 * @param b
 	 * @param c
 	 */
 	public static void classifyTriangle(int a, int b, int c) {
-
-		if (isEquilateral(a, b, c)) {
+		if (a < 0 || b < 0 || c < 0) {
+			triangle = Triangle_Types.ERROR;
+		} else if (isEquilateral(a, b, c)) {
 			triangle = Triangle_Types.equilateral;
 		} else if (isIsosceles(a, b, c)) {
 			triangle = Triangle_Types.isosceles;
 		} else if (!isTriangle(a, b, c)) {
 			triangle = Triangle_Types.Nottriangle;
-		} else if (a < 0 || b < 0 || c < 0) {
-			triangle = Triangle_Types.ERROR;
 		} else {
 			triangle = Triangle_Types.Scalene;
 		}
