@@ -13,7 +13,6 @@ public class AppTest {
 	TriangleClassifier triangle = new TriangleClassifier();
 	
 	@Test
-  
 	public void equilateralTriangle(){
         int a = 2;
         int b = 2;
